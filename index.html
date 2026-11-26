@@ -839,6 +839,29 @@ html[lang="zh-Hans"] .p4 h3{font-family:"Noto Sans SC",sans-serif;letter-spacing
 @media (max-width:1000px){.p4{grid-template-columns:1fr 1fr}.p4 li:nth-child(3){border-left:0;padding-left:0}.p4 li:nth-child(n+3){border-top:1px solid var(--linea)}}
 @media (max-width:600px){.p4{grid-template-columns:1fr}.p4 li{border-left:0;padding-left:0;border-top:1px solid var(--linea)}.p4 li:first-child{border-top:0}.p4 .ilw{width:88px;height:88px;margin-bottom:24px}}
 @media (prefers-reduced-motion:reduce){.il *{animation:none!important}.il .d{stroke-dashoffset:0;transition:none}.il2 .run{display:none}}
+
+/* ===== v10: responsive y alineación ===== */
+@media (min-width:1600px){:root{--max:1320px}}
+@media (min-width:1900px){html{zoom:1.12}}
+@media (min-width:2200px){html{zoom:1.3}}
+@media (min-width:2700px){html{zoom:1.55}}
+@media (min-width:3300px){html{zoom:1.9}}
+/* misión / visión alineadas a la grilla general */
+.ed-row,.ed-v{grid-template-columns:minmax(0,1.5fr) minmax(0,1fr)!important;gap:28px clamp(32px,5vw,80px)!important;align-items:end}
+.ed-lab{grid-column:1/-1!important;grid-row:1!important}
+.ed-h{grid-column:1;grid-row:2}
+.ed-b{grid-column:2!important;grid-row:2!important}
+.ed-v .ed-h{grid-column:1;grid-row:2/4!important}
+.ed-v .ed-img{grid-column:2!important;grid-row:2!important;margin:0!important;align-self:end}
+.ed-v .ed-b{grid-row:3!important}
+@media (max-width:900px){.ed-row,.ed-v{grid-template-columns:1fr!important}.ed-h,.ed-b,.ed-v .ed-h,.ed-v .ed-img,.ed-v .ed-b{grid-column:1!important;grid-row:auto!important}}
+/* tablet: hero y método */
+@media (max-width:1000px) and (min-width:601px){.p4 li{padding-right:20px}}
+@media (max-width:900px){.hero .explode{max-width:520px;margin-inline:auto}}
+
+.photo figure{overflow:hidden}
+@media (max-width:700px){.mapfig figcaption{transform:translate(calc(-100% - 14px),-50%)}}
+html,body{overflow-x:clip}
 </style>
 </head>
 <body class="v-a"><div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -981,7 +1004,7 @@ html[lang="zh-Hans"] .p4 h3{font-family:"Noto Sans SC",sans-serif;letter-spacing
   document.documentElement.classList.add('js');
   var reduce=window.matchMedia('(prefers-reduced-motion: reduce)').matches;
   // Aparición al hacer scroll
-  var io='IntersectionObserver' in window ? new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:.18}) : null;
+  var io='IntersectionObserver' in window ? new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0,rootMargin:'0px 0px -8% 0px'}) : null;
   document.querySelectorAll('.rv,.io').forEach(function(el){io?io.observe(el):el.classList.add('in')});
   (function(){var tp=document.querySelector('.ribbon .rbt');if(!tp)return;var red=window.matchMedia('(prefers-reduced-motion: reduce)').matches;var u=tp.getComputedTextLength()/6,o=0,last=0;if(red||!u)return;var vis=true;
    if('IntersectionObserver' in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(tp.closest('.ribbon'))}
