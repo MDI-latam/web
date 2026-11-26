@@ -862,6 +862,16 @@ html[lang="zh-Hans"] .p4 h3{font-family:"Noto Sans SC",sans-serif;letter-spacing
 .photo figure{overflow:hidden}
 @media (max-width:700px){.mapfig figcaption{transform:translate(calc(-100% - 14px),-50%)}}
 html,body{overflow-x:clip}
+
+/* v11 responsive */
+.proof .wrap{grid-template-columns:minmax(0,.8fr) minmax(0,1.2fr)}
+@media (max-width:1180px){.proof .wrap{grid-template-columns:1fr;gap:28px}}
+.brands img.lg-samsung{width:clamp(70px,62%,100px)!important}.brands img.lg-honor{width:clamp(60px,55%,86px)!important}
+.cinfo dd{overflow-wrap:anywhere}
+@media (max-width:600px){.cinfo div{grid-template-columns:1fr;gap:4px}footer{padding-bottom:84px}.contact{padding-bottom:40px}}
+.ed-v .ed-h{align-self:center}
+
+body.atc .fab{opacity:0!important;pointer-events:none!important}
 </style>
 </head>
 <body class="v-a"><div class="aura" aria-hidden="true"><i></i><i></i><i></i></div>
@@ -1006,6 +1016,7 @@ html,body{overflow-x:clip}
   // Aparición al hacer scroll
   var io='IntersectionObserver' in window ? new IntersectionObserver(function(es){es.forEach(function(e){if(e.isIntersecting){e.target.classList.add('in');io.unobserve(e.target);}})},{threshold:0,rootMargin:'0px 0px -8% 0px'}) : null;
   document.querySelectorAll('.rv,.io').forEach(function(el){io?io.observe(el):el.classList.add('in')});
+  (function(){var c=document.querySelector('.contact');if(!c||!('IntersectionObserver' in window))return;new IntersectionObserver(function(es){document.body.classList.toggle('atc',es[0].isIntersecting)},{threshold:0}).observe(c)})();
   (function(){var tp=document.querySelector('.ribbon .rbt');if(!tp)return;var red=window.matchMedia('(prefers-reduced-motion: reduce)').matches;var u=tp.getComputedTextLength()/6,o=0,last=0;if(red||!u)return;var vis=true;
    if('IntersectionObserver' in window){new IntersectionObserver(function(es){vis=es[0].isIntersecting}).observe(tp.closest('.ribbon'))}
    function f(ts){var dt=last?Math.min(ts-last,50):16;last=ts;if(vis){o-=dt*0.06;if(o<-u)o+=u;tp.setAttribute('startOffset',o.toFixed(1))}requestAnimationFrame(f)}requestAnimationFrame(f)})();
